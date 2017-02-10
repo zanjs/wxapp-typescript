@@ -1,1 +1,8 @@
-"use strict";exports.empty={closed:!0,next:function(t){},error:function(t){throw t},complete:function(){}};
+"use strict";
+exports.empty = {
+    closed: true,
+    next: function (value) { },
+    error: function (err) { throw err; },
+    complete: function () { }
+};
+//# sourceMappingURL=Observer.js.map

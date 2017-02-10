@@ -1,1 +1,0 @@
-"use strict";function findIndex(n,i){return this.lift(new find_1.FindValueOperator(n,this,(!0),i))}var find_1=require("./find");exports.findIndex=findIndex;

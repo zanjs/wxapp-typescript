@@ -1,1 +1,0 @@
-"use strict";var Observable_1=require("../../Observable"),never_1=require("../../observable/never");Observable_1.Observable.never=never_1.never;

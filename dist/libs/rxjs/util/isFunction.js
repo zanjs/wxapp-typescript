@@ -1,1 +1,6 @@
-"use strict";function isFunction(n){return"function"==typeof n}exports.isFunction=isFunction;
+"use strict";
+function isFunction(x) {
+    return typeof x === 'function';
+}
+exports.isFunction = isFunction;
+//# sourceMappingURL=isFunction.js.map

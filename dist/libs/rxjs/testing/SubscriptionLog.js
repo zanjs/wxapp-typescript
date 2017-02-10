@@ -1,1 +1,0 @@
-"use strict";var SubscriptionLog=function(){function i(i,r){void 0===r&&(r=Number.POSITIVE_INFINITY),this.subscribedFrame=i,this.unsubscribedFrame=r}return i}();exports.SubscriptionLog=SubscriptionLog;

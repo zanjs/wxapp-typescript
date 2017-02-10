@@ -2,6 +2,11 @@
 var Observable_1 = require("../../libs/rxjs/Observable");
 var user_1 = require("../modules/user");
 var api_1 = require("../../net/api");
+require("../../libs/rxjs/add/operator/mergeMap");
+require("../../libs/rxjs/add/operator/map");
+require("../../libs/rxjs/add/operator/catch");
+require("../../libs/rxjs/add/observable/of");
+require("../../libs/rxjs/add/observable/merge");
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = function (action$) {
     return action$.ofType("" + user_1.Actions.login)

@@ -1,1 +1,0 @@
-"use strict";function publishLast(){return multicast_1.multicast.call(this,new AsyncSubject_1.AsyncSubject)}var AsyncSubject_1=require("../AsyncSubject"),multicast_1=require("./multicast");exports.publishLast=publishLast;

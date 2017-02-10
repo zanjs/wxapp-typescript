@@ -1,1 +1,0 @@
-"use strict";var Observable_1=require("../../Observable"),takeWhile_1=require("../../operator/takeWhile");Observable_1.Observable.prototype.takeWhile=takeWhile_1.takeWhile;

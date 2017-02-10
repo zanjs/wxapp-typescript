@@ -1,1 +1,0 @@
-"use strict";function assignImpl(s){for(var r=[],t=1;t<arguments.length;t++)r[t-1]=arguments[t];for(var n=r.length,o=0;o<n;o++){var e=r[o];for(var g in e)e.hasOwnProperty(g)&&(s[g]=e[g])}return s}function getAssign(s){return s.Object.assign||assignImpl}var root_1=require("./root");exports.assignImpl=assignImpl,exports.getAssign=getAssign,exports.assign=getAssign(root_1.root);

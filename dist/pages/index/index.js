@@ -17,7 +17,7 @@ var mapDispatchToPage = function (dispatch) { return ({
 var IndexPage = (function (_super) {
     __extends(IndexPage, _super);
     function IndexPage() {
-        var _this = _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.data = {
             motto: 'Hello World',
             user: null,

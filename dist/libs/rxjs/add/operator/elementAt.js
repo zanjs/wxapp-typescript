@@ -1,1 +1,0 @@
-"use strict";var Observable_1=require("../../Observable"),elementAt_1=require("../../operator/elementAt");Observable_1.Observable.prototype.elementAt=elementAt_1.elementAt;

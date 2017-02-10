@@ -1,1 +1,0 @@
-"use strict";function shareSubjectFactory(){return new Subject_1.Subject}function share(){return multicast_1.multicast.call(this,shareSubjectFactory).refCount()}var multicast_1=require("./multicast"),Subject_1=require("../Subject");exports.share=share;

@@ -1,1 +1,0 @@
-"use strict";var Observable_1=require("../../Observable"),auditTime_1=require("../../operator/auditTime");Observable_1.Observable.prototype.auditTime=auditTime_1.auditTime;

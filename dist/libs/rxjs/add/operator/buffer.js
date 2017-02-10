@@ -1,1 +1,0 @@
-"use strict";var Observable_1=require("../../Observable"),buffer_1=require("../../operator/buffer");Observable_1.Observable.prototype.buffer=buffer_1.buffer;

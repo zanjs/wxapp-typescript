@@ -1,1 +1,0 @@
-"use strict";function zipAll(i){return this.lift(new zip_1.ZipOperator(i))}var zip_1=require("./zip");exports.zipAll=zipAll;

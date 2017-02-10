@@ -1,1 +1,0 @@
-"use strict";var Observable_1=require("../../Observable"),timeInterval_1=require("../../operator/timeInterval");Observable_1.Observable.prototype.timeInterval=timeInterval_1.timeInterval;

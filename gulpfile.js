@@ -7,6 +7,7 @@ const rename = require("gulp-rename");
 const gulpif = require('gulp-if');
 const uglify = require('gulp-uglify');
 const readJson = require('read-package-json');
+const madge = require('madge');
 
 const tsProject = ts.createProject('tsconfig.json');
 
@@ -40,16 +41,16 @@ const packages = {
   'redux-observable': {
     main: 'dist/redux-observable.js',
   },
-  'rxjs': {
+  /*'rxjs': {
     notBundle: true,
-  },
-  'moment': {
+  },*/
+  /*'moment': {
     main: 'min/moment.min.js',
     fix: {
       search: /d\[e\]instanceof Function/g,
       replace: 'typeof d\[e\] === \'function\'',
     },
-  },
+  },*/
   'wechat-weapp-redux': {
     notBundle: true,
     addIndex: true,
@@ -122,30 +123,43 @@ const copyJs = (file, base, dest) => {
 
 gulp.task('compile', () => {
   gulp.src(paths.scripts)
-    .pipe(tsProject())
-    .js.pipe(modify({
-      // 文件修改，替换`require('bluebird')`为`require("../libs/bluebird")`
-      fileModifier: (file, contents) => {
-        const matchs = contents.match(/(require\("([^.].*)"\))/g);
-        if (!matchs) {
-          return contents;
-        }
-        let rPath = path.relative(file.path, './src');
-        rPath = rPath.substring(0, rPath.length - 2);
-        if (rPath.length === 0) {
-          rPath = './';
-        }
-        matchs.forEach((packageName) => {
-          packageName = packageName.substring(9, packageName.length - 2)
-          const package = packages[packageName];
-          if (package && package.addIndex) {
-            contents = contents.replace(new RegExp(`(require\\("(${packageName})"\\))`, 'g'), 'require("$2/index")');
-          }
-        });
-        return contents.replace(/(require\("([^.].*)"\))/g, `require("${rPath}libs/$2")`);
-      },
-    }))
-    .pipe(gulp.dest('dist'));
+    .pipe(tsProject()).js.pipe(gulp.dest('tmp/rx_dep_ana'))
+    .on('end', () => {
+      madge(['tmp/rx_dep_ana/pages','tmp/rx_dep_ana/app.js'], {includeNpm: true})
+          .then(r => Object.keys(r.obj()).filter(path => !!~path.indexOf('rxjs')))
+	  
+          .then(r => r.map(path => `${path.replace('../../', '')}.js`))
+          .then(rx_files => {
+            gulp.src(rx_files, {base: 'node_modules'})
+              .pipe(gulp.dest('dist/libs'))
+          })
+      
+      gulp.src(paths.scripts)
+        .pipe(tsProject()).js.pipe(modify({
+          // 文件修改，替换`require('bluebird')`为`require("../libs/bluebird")`
+          fileModifier: (file, contents) => {
+            const matchs = contents.match(/(require\("([^.].*)"\))/g);
+            if (!matchs) {
+              return contents;
+            }
+            let rPath = path.relative(file.path, './src').replace(/\\/g, '/');
+            rPath = rPath.substring(0, rPath.length - 2);
+            if (rPath.length === 0) {
+              rPath = './';
+            }
+            matchs.forEach((packageName) => {
+              packageName = packageName.substring(9, packageName.length - 2)
+              const package = packages[packageName];
+              if (package && package.addIndex) {
+                contents = contents.replace(new RegExp(`(require\\("(${packageName})"\\))`, 'g'), 'require("$2/index")');
+              }
+            });
+            // Hint: 小程序下的顶级引用 "a/b/c" 是相对于模块当前目录的，所以这里要把引用node_modules下的require重写成libs下。 奔溃~
+            return contents.replace(/(require\("([^.].*)"\))/g, `require("${rPath}libs/$2")`);
+          },
+        }))
+        .pipe(gulp.dest('dist'))
+    });
 });
 
 gulp.task('copyStatic', () => {

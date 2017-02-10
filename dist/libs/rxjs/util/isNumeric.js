@@ -1,1 +1,0 @@
-"use strict";function isNumeric(r){return!isArray_1.isArray(r)&&r-parseFloat(r)+1>=0}var isArray_1=require("../util/isArray");exports.isNumeric=isNumeric;

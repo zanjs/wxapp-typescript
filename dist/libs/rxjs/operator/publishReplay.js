@@ -1,1 +1,0 @@
-"use strict";function publishReplay(e,t,u){return void 0===e&&(e=Number.POSITIVE_INFINITY),void 0===t&&(t=Number.POSITIVE_INFINITY),multicast_1.multicast.call(this,new ReplaySubject_1.ReplaySubject(e,t,u))}var ReplaySubject_1=require("../ReplaySubject"),multicast_1=require("./multicast");exports.publishReplay=publishReplay;

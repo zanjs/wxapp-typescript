@@ -1,1 +1,0 @@
-"use strict";var Observable_1=require("../../Observable"),windowTime_1=require("../../operator/windowTime");Observable_1.Observable.prototype.windowTime=windowTime_1.windowTime;

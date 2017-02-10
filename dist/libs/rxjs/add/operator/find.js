@@ -1,1 +1,0 @@
-"use strict";var Observable_1=require("../../Observable"),find_1=require("../../operator/find");Observable_1.Observable.prototype.find=find_1.find;

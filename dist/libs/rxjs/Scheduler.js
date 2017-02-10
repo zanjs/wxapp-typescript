@@ -1,1 +1,0 @@
-"use strict";var Scheduler=function(){function e(t,n){void 0===n&&(n=e.now),this.SchedulerAction=t,this.now=n}return e.prototype.schedule=function(e,t,n){return void 0===t&&(t=0),new this.SchedulerAction(this,e).schedule(n,t)},e.now=Date.now?Date.now:function(){return+new Date},e}();exports.Scheduler=Scheduler;
