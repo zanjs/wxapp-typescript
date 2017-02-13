@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var wechat_weapp_redux_1 = require("../../libs/wechat-weapp-redux/index");
+var wechat_weapp_redux_1 = require("wechat-weapp-redux");
 var base_1 = require("../base");
 var user_1 = require("../../redux/modules/user");
 var app = getApp();

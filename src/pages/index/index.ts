@@ -13,22 +13,29 @@ const mapDispatchToPage = dispatch => ({
   login: () => dispatch(Actions.login()),
 });
 
+
+
 class IndexPage extends BasePage {
   login: () => void
-  
   data = {
-    motto: 'Hello World',
+    motto: 'Hello',
     user: null,
   }
 
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs',
-    });
+  bindViewTap(): void {
+     console.log(11)
+  }
+
+  handleCheck( e ) {
+    const id = parseInt( e.target.id )
+    console.log(id)
   }
 
   onLoad() {
     this.login();
+    console.log(this)
+    // this.bindViewTap()
+
   }
 }
 

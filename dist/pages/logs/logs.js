@@ -8,7 +8,7 @@ var base_1 = require("../base");
 var LogsPage = (function (_super) {
     __extends(LogsPage, _super);
     function LogsPage() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super.apply(this, arguments) || this;
         _this.data = {};
         return _this;
     }

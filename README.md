@@ -7,7 +7,7 @@
 ### 开发
 
 ```bash
-$ git clone git@github.com:linguofeng/wxapp-typescript.git
+$ git clone https://github.com/zanjs/wxapp-typescript.git
 $ cd wxapp-typescript
 $ npm install -g gulp typescript
 $ yarn
